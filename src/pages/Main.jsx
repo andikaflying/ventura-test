@@ -42,7 +42,7 @@ const Main = () => {
               />
             );
           })}
-        {!loading && userList.length > 0 && listLength <= total && (
+        {!loading && userList.length > 0 && listLength < total && (
           <Avatar
             isOther={true}
             numbers={total - listLength}
