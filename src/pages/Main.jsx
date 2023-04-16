@@ -8,6 +8,8 @@ import Select from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { PropertiesBox, CurrentPage, PageBox } from "./styles";
+import useUserList from "../hooks/getUsers";
+import useUser from "../stores/users";
 
 const SIZE = {
   small: "SMALL",
@@ -18,6 +20,10 @@ const SIZE = {
 const Main = () => {
   const [avatarSize, setAvatarSize] = useState(SIZE.small);
   const [listLength, setListLength] = useState(6);
+
+  const query = { page: 1, per_page: listLength };
+  const { loading, error } = useUserList(query);
+  const { userList, totalPage } = useUser((state) => state);
 
   return (
     <PropertiesBox>
