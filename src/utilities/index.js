@@ -8,7 +8,9 @@ export const getEndpointUrl = (params) => {
   let queryLine = "";
 
   for (const [key, value] of Object.entries(query)) {
-    if (!queryLine) queryLine = queryLine + "&";
+    if (queryLine !== "") {
+      queryLine = queryLine + "&";
+    }
     const temp = key + "=" + value;
     queryLine = queryLine + temp;
   }

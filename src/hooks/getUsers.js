@@ -5,7 +5,6 @@ import { USERS } from "../utilities";
 
 export default function useUserList(query) {
   const { page, per_page } = query;
-  console.log("Manggil useUserList");
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -22,11 +21,10 @@ export default function useUserList(query) {
 
     if (page <= totalPage) {
       try {
-        fetch(URL)
+        fetch(endpointUrl)
           .then((resp) => resp.json())
           .then((response) => {
             setLoading(false);
-
             setUserList({
               data: response.data,
               total: response.total,
